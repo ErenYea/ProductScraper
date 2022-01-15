@@ -154,6 +154,8 @@ p {
   /* border: 2px solid black; */
 }
 
+
+
 @media screen and (min-width: 992px) {
   .section {
     width: 95vw;

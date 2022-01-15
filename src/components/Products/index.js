@@ -10,14 +10,21 @@ const url = 'https://course-api.com/react-prop-types-example'
 const Index = () => {
   const { products } = useFetch(url)
   return (
-    <CustomDiv> 
-      <CustomHeading>Products</CustomHeading>
-      <section className='products'>
-        {products.map((product) => {
-          return <Product key={product.id} {...product} />
-        })}
-      </section>
-    </CustomDiv>
+    
+
+    <div className="container">
+
+    
+      <CustomDiv> 
+        <CustomHeading>Products</CustomHeading>
+        <section className='products'>
+          {products.map((product) => {
+            return <Product key={product.id} {...product} />
+          })}
+        </section>
+      </CustomDiv>
+    </div>
+    
   )
 }
 const CustomHeading = styled.h1`

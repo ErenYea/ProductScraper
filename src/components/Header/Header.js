@@ -19,8 +19,8 @@ function Header() {
         <Search/>
       </Menu>
       <RightMenu>
-        <a href="#">Shop</a>
-        <a href="#">Tesla Account</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
         <CustomMenu onClick={() => setBurgerOpen(!BurgerOpen)} ></CustomMenu>
       </RightMenu>
       <BurgerNavbar close={BurgerOpen}>
@@ -98,6 +98,10 @@ const RightMenu = styled.div`
     text-transform: uppercase;
     margin-right: 10px;
     color:white !important;
+  }
+  a:hover{
+    font-weight: 600;
+    color:#2196f3 !important;
   }
   
 `;
