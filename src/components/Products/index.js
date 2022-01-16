@@ -12,8 +12,9 @@ import "slick-carousel/slick/slick-theme.css";
 // I SWITCHED TO PERMANENT DOMAIN
 const url = 'https://course-api.com/react-prop-types-example'
 
-const Index = () => {
+const Index = ( {property}) => {
   const { products } = useFetch(url)
+  console.log(property);
   return (
     
 
@@ -22,7 +23,7 @@ const Index = () => {
     
       <CustomDiv> 
         <CustomHeading>Products</CustomHeading>
-        <section className='products'>
+        <section className='products' style={{ gridTemplateColumns: `${property}`}}>
           {products.map((product) => {
             return <Product key={product.id} {...product} />
           })}

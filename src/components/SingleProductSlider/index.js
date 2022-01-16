@@ -1,24 +1,23 @@
-import React from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-
-import "slick-carousel/slick/slick-theme.css";
+import React, { useState, useEffect} from "react";
 import styled from 'styled-components'
 
 
-const ImageSlider = ()=>{
+const SingleSLider = ()=>{
 
-    let settings = {
-      className: "center",
-      centerMode: true,
-      infinite: true,
-      centerPadding: "80px",
-      slidesToShow: 3,
-      speed: 500,
-    };
+    const settings = {
 
+        dots: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        pauseOnHover: true
 
-    return (
+    }
+
+    return(
         <Carousel {...settings}>
             <Wraps>
                 <CustomHeading>
@@ -42,27 +41,23 @@ const ImageSlider = ()=>{
                 </CustomHeading>
             </Wraps>
 
+
         </Carousel>
-      
     )
+
 }
 
 
-
-const Carousel = styled(Slider)` 
-    // display:flex;
-    // justify-content: space-between;
+const Carousel = styled(Slider)`
     border: 2px solid red;
     // height :200px;
     // align-items:center;
     // justify-content: center;
-    margin-bottom:50px;
+    margin-top:150px;
     padding:10px;
+
+
 `
-
-
-
-
 
 const Wraps = styled.div`
     display:block;
@@ -71,17 +66,15 @@ const Wraps = styled.div`
     // justify-content: space-between;
     padding:20px;
     border: 2px solid green;
-    height:198px;
-    margin-left:10px !important;
-    margin-right:10px !important;
+    height:477px;
+    
 
 `
+
 const CustomHeading = styled.h1`
-    height:100%;
-    border:2px solid red;
-    cursor:pointer;
+
 
 `
 
 
-export default ImageSlider;
+export default SingleSLider;

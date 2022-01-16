@@ -8,7 +8,7 @@ import Product from "./components/Products";
 import Error from './components/Error'
 import Contact from './components/Contact'
 import About from './components/About'
-
+import Landing from './components/Landing'
 
 function App() {
   return (
@@ -16,7 +16,10 @@ function App() {
       <Router>
         <Header></Header>
         <Routes>
-          <Route exact path="/" element={<Product/>} />
+          <Route path="/product" element={<Product/>} />
+
+
+          <Route exact path="/" element={<Landing/>} />
       
           <Route path="/about" element={<About/>} />
 
