@@ -4,7 +4,7 @@ import { useFetch } from '../customhook/2-useFetch'
 import styled from 'styled-components'
 import Slider from '../SliderProduct'
 import "slick-carousel/slick/slick.css";
-
+import products from './data'
 import "slick-carousel/slick/slick-theme.css";
 
 
@@ -13,7 +13,8 @@ import "slick-carousel/slick/slick-theme.css";
 const url = 'https://course-api.com/react-prop-types-example'
 
 const Index = ( {property}) => {
-  const { products } = useFetch(url)
+  // const { products } = useFetch(url)
+  console.log(products);
   console.log(property);
   return (
     

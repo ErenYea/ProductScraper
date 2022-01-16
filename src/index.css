@@ -439,3 +439,7 @@ main {
 .next-btn:hover {
   color: var(--clr-primary-5);
 }
+
+.custom{
+  cursor: pointer;
+}

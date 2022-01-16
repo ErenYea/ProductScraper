@@ -20,7 +20,7 @@ const ImageSlider = () => {
       <Wraps >
         <Customred >
           <img
-            src="https://i5.walmartimages.com/asr/e905ad27-5cc2-42ec-a823-2de4d12c2c8a.f930a9e0ddfe273015986dd73733b1be.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"
+            src="https://i5.walmartimages.com/asr/34433826-3033-47cb-aa39-2882da3cc897.8ccbe93b6fa0f3bee7cc25ca14451bf0.png?odnHeight=372&odnWidth=372&odnBg=FFFFFF"
             alt="No image"
             width="280px"
             height="150px"
