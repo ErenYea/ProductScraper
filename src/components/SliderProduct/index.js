@@ -16,8 +16,8 @@ const ImageSlider = () => {
   };
 
   return (
-    <Carousel {...settings}>
-      <Wraps>
+    <Carousel {...settings} className="review">
+      <Wraps >
         <Customred >
           <img
             src="https://i5.walmartimages.com/asr/e905ad27-5cc2-42ec-a823-2de4d12c2c8a.f930a9e0ddfe273015986dd73733b1be.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"

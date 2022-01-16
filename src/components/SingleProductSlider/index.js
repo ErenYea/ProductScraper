@@ -18,7 +18,7 @@ const SingleSLider = ()=>{
     }
 
     return(
-        <Carousel {...settings}>
+        <Carousel {...settings} className="review">
             <Wraps img="image1.jpeg">
                 
                 
