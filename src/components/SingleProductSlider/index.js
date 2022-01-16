@@ -19,26 +19,18 @@ const SingleSLider = ()=>{
 
     return(
         <Carousel {...settings}>
-            <Wraps>
-                <CustomHeading>
-                    1
-                </CustomHeading>
+            <Wraps img="image1.jpeg">
+                
                 
             </Wraps>
-            <Wraps>
-                <CustomHeading>
-                    2
-                </CustomHeading>
+            <Wraps img="image2.jpeg">
+                
             </Wraps>
-            <Wraps>
-                <CustomHeading>
-                    3
-                </CustomHeading>
+            <Wraps img="image3.jpeg">
+                
             </Wraps>
-            <Wraps>
-                <CustomHeading>
-                    4
-                </CustomHeading>
+            <Wraps img="image4.jpeg">
+                
             </Wraps>
 
 
@@ -49,7 +41,7 @@ const SingleSLider = ()=>{
 
 
 const Carousel = styled(Slider)`
-    border: 2px solid red;
+    // border: 2px solid red;
     // height :200px;
     // align-items:center;
     // justify-content: center;
@@ -65,16 +57,16 @@ const Wraps = styled.div`
     // display:flex;
     // justify-content: space-between;
     padding:20px;
-    border: 2px solid green;
+    // border: 2px solid green;
     height:477px;
-    
+    background-image:${(props)=>`url('/images/${props.img}')`};
+    background-size: cover;
+    // background-position: center;
+    backgroung-repeat: no-repeat;
 
 `
 
-const CustomHeading = styled.h1`
 
-
-`
 
 
 export default SingleSLider;

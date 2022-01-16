@@ -7,7 +7,7 @@ import Input from "@mui/material/Input";
 import FormHelperText from "@mui/material/FormHelperText";
 import Button from "@mui/material/Button";
 
-const Contact = () => {
+const Contact = ({ img }) => {
   const [email, setEmail] = useState("");
   const [text, setText] = useState("");
 
@@ -73,7 +73,7 @@ const CustomForm = styled.div`
   justify-content: center;
   padding: 20px;
 
-  height: 100vh;
+  height: 100%;
 `;
 
 const Customdivform = styled.div`

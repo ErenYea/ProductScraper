@@ -8,6 +8,8 @@ import Search from '../Search'
 
 function Header() {
   const [BurgerOpen, setBurgerOpen] = useState(false);
+  
+
 //   const cars = useSelector(selectCars);
 //   console.log(cars);
   return (
@@ -30,7 +32,7 @@ function Header() {
         </CloseWrapper>
 
         <li>
-          <a href="#">Existing Inventory</a>
+          <a href="/login">Login</a>
         </li>
         <li>
           <a href="#">Existing Inventory</a>
@@ -56,6 +58,8 @@ function Header() {
 }
 
 export default Header;
+
+
 
 const Container = styled.div`
   min-height: 60px;
