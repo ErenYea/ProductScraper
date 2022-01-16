@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
-
+import products from "./data";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 
@@ -16,47 +16,16 @@ const ImageSlider = () => {
   };
 
   return (
-    <Carousel {...settings} className="review">
-      <Wraps >
-        <Customred >
-          <img
-            src="https://i5.walmartimages.com/asr/34433826-3033-47cb-aa39-2882da3cc897.8ccbe93b6fa0f3bee7cc25ca14451bf0.png?odnHeight=372&odnWidth=372&odnBg=FFFFFF"
-            alt="No image"
-            width="280px"
-            height="150px"
-          />
-        </Customred>
-      </Wraps>
-      <Wraps>
-        <Customred>
-          <img
-            src="https://i5.walmartimages.com/asr/d2f5acf1-c4fe-4701-a33e-74e0e58194cf.d1d07f8210f04a0f6b15319f5c014a45.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF"
-            alt="No image"
-            width="280px"
-            height="150px"
-          />
-        </Customred>
-      </Wraps>
-      <Wraps>
-        <Customred>
-          <img
-            src="https://i5.walmartimages.com/asr/8488b4ae-20dd-4775-9087-7b4b682f4cc0.821e62fe5fe3e142f14b7d5aed11853d.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"
-            alt="No image"
-            width="280px"
-            height="150px"
-          />
-        </Customred>
-      </Wraps>
-      <Wraps>
-        <Customred >
-          <img
-            src="https://i5.walmartimages.com/asr/8bb5e083-82de-44a1-89d6-c88109051785.296f871a76c999c568b0fd7e5711eedf.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"
-            alt="No image"
-            width="280px"
-            height="150px"
-          />
-        </Customred>
-      </Wraps>
+    <Carousel {...settings} className="products">
+      {products.map((product) => {
+        return (
+          <Wraps key={product.id}>
+            <Customred className="product review">
+              <img src={product.url} alt="no"/>
+            </Customred>
+          </Wraps>
+        );
+      })}
     </Carousel>
   );
 };
@@ -64,7 +33,7 @@ const ImageSlider = () => {
 const Carousel = styled(Slider)`
   // display:flex;
   // justify-content: space-between;
-//   border: 2px solid red;
+  //   border: 2px solid red;
   // height :200px;
   // align-items:center;
   // justify-content: center;
@@ -78,18 +47,17 @@ const Wraps = styled.div`
   // display:flex;
   // justify-content: space-between;
   padding: 20px;
-//   border: 2px solid green;
-  height: 200px;
+  //   border: 2px solid green;
+  // height: 200px;
   margin-left: 10px !important;
   margin-right: 10px !important;
 `;
 const Customred = styled.div`
   height: 100%;
-  border: 1px solid;
+  // border: 1px solid;
   border-radius: 5%;
   cursor: pointer;
-  box-shadow: 10px 10px;
-  bor
+  // box-shadow: 10px 10px;
 `;
 
 export default ImageSlider;
