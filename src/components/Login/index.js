@@ -22,7 +22,7 @@ const LoginPage = ({img}) => {
   return (
 
       <CustomDiv img={img}>
-        <AnotherDiv>
+        <AnotherDiv className="review">
           <CustomHeading>Login</CustomHeading>
           <Wrap>
             <FormControl>
@@ -79,10 +79,10 @@ const CustomDiv = styled.div`
   margin-top: 60px;
 //   border: 2px solid red;
   align-items: center;
-  background-image: ${(props)=>`url('/images/${props.img}')`};
-  background-size: cover;
-  background-position: center;
-  backgroung-repeat: no-repeat;
+  // background-image: ${(props)=>`url('/images/${props.img}')`};
+  // background-size: cover;
+  // background-position: center;
+  // backgroung-repeat: no-repeat;
   justify-content: center;
   display: flex;
   height: 697px;
@@ -95,12 +95,12 @@ const CustomHeading = styled.h1`
 `;
 
 const AnotherDiv = styled.div`
-  border: 1px solid black;
+  // border: 1px solid black;
   width: 500px;
   height: 500px;
   background: white;
   border-radius: 5%;
-  box-shadow: 5px 10px;
+  // box-shadow: 5px 10px;
 
   //   transform: scale(.9);
 `;
