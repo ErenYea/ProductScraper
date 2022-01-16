@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-// import { selectCars } from "../features/car/carSlice";
-import { useSelector } from "react-redux";
+
+
 import Search from '../Search'
 
 function Header() {
@@ -73,26 +73,21 @@ const Container = styled.div`
   right: 0;
   z-index: 1;
   // border: 2px solid red;
-  background:#282A35;
+  // background:#282A35;
+  background:#0071dc;
   color:white;
 `;
 
 const Menu = styled.div`
   // border:2px solid green;
   display: flex;
+  width:500px;
   align-items: center;
   justify-content: center;
   flex: 1;
   padding-x:0px 10px;
-  a {
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 0 10px;
-    flex-wrap: nowrap;
-  }
-  @media (max-width: 768px) {
-    display: none;
-  }
+  
+  
 `;
 
 const RightMenu = styled.div`

@@ -13,7 +13,7 @@ const Search = () => {
       <CustomSearch>
           
           <CustomTextField>
-              <TextField id="outlined-basic" label="Search here" variant="outlined"  value={text} onChange={(e)=>{setText(e.target.value)}} fullWidth/>
+              <TextField id="outlined-basic" label="Search here" variant="outlined"  value={text} onChange={(e)=>{setText(e.target.value)}} fullWidth="true"/>
               <CustomSearchIcon>
                 <SearchIcon  onClick={()=>Searchthis(text)} sx={{ color: "black" }}/>
               </CustomSearchIcon>

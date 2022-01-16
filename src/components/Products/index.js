@@ -1,6 +1,6 @@
 import React from 'react'
 import Product from './Product'
-import { useFetch } from '../customhook/2-useFetch'
+
 import styled from 'styled-components'
 import Slider from '../SliderProduct'
 import "slick-carousel/slick/slick.css";
@@ -10,10 +10,10 @@ import "slick-carousel/slick/slick-theme.css";
 
 // ATTENTION!!!!!!!!!!
 // I SWITCHED TO PERMANENT DOMAIN
-const url = 'https://course-api.com/react-prop-types-example'
+
 
 const Index = ( {property}) => {
-  // const { products } = useFetch(url)
+  
   console.log(products);
   console.log(property);
   return (
@@ -29,6 +29,9 @@ const Index = ( {property}) => {
             return <Product key={product.id} {...product} />
           })}
         </section>
+        <CustomHeading>
+          Recommended Products
+        </CustomHeading>
         <Slider/>
       </CustomDiv>
     </div>

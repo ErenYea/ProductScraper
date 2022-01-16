@@ -17,6 +17,7 @@ const ImageSlider = () => {
 
   return (
     <Carousel {...settings} className="products">
+      
       {products.map((product) => {
         return (
           <Wraps key={product.id}>
@@ -59,5 +60,7 @@ const Customred = styled.div`
   cursor: pointer;
   // box-shadow: 10px 10px;
 `;
+
+
 
 export default ImageSlider;
