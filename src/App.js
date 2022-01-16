@@ -24,7 +24,7 @@ function App() {
       
           <Route path="/about" element={<About/>} />
 
-          <Route path="/contact" element={<Contact/>} />
+          <Route path="/contact" element={<Contact img="simplebackground.jpg"/>} />
 
           <Route path="/admin-panel" element={<AdminPage/>} />
 

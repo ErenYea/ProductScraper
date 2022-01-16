@@ -16,10 +16,10 @@ const Contact = ({ img }) => {
   };
 
   return (
-    <div className="container">
-      <CustomForm>
-        <CustomeHeading>Contact US</CustomeHeading>
-        <Customdivform>
+    <CustomDiv img={img}>
+      <AnotherDiv>
+        <CustomHeading>Contact Us</CustomHeading>
+        <Wrap>
           <FormControl>
             <InputLabel htmlFor="my-email">Email address</InputLabel>
             <Input
@@ -33,24 +33,26 @@ const Contact = ({ img }) => {
               We'll never share your email.
             </FormHelperText>
           </FormControl>
-        </Customdivform>
+        </Wrap>
 
-        <Customdivform>
-          <FormControl>
-            <InputLabel htmlFor="my-message">Message</InputLabel>
-            <Input
-              id="my-message"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              fullWidth
-              autoComplete
-              multiline
-              required
-            />
-          </FormControl>
-        </Customdivform>
-
-        <CustomButton>
+        <Wrap>
+          <AnotherWrap>
+            <FormControl>
+              <InputLabel htmlFor="my-message">Message</InputLabel>
+              <Input
+                id="my-message"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                fullWidth
+                
+                multiline
+                
+              />
+            </FormControl>
+            
+          </AnotherWrap>
+        </Wrap>
+        <Wrap>
           <Button
             variant="contained"
             onClick={getMessage}
@@ -59,41 +61,54 @@ const Contact = ({ img }) => {
           >
             Submit
           </Button>
-        </CustomButton>
-      </CustomForm>
-    </div>
+        </Wrap>
+      </AnotherDiv>
+    </CustomDiv>
   );
 };
 
-const CustomForm = styled.div`
-  margin-top: 100px;
-  display: flex;
-  flex-direction: column;
-  // border: 2px solid red;
+
+
+const CustomDiv = styled.div`
+  margin-top: 60px;
+  //   border: 2px solid red;
+  align-items: center;
+  background-image: ${(props) => `url('/images/${props.img}')`};
+  background-size: cover;
+  background-position: center;
+  backgroung-repeat: no-repeat;
   justify-content: center;
+  display: flex;
+  height: 697px;
+  //   background: grey;
+`;
+
+const CustomHeading = styled.h1`
+  font-weight: 300;
+  margin-bottom: 50px;
+`;
+
+const AnotherDiv = styled.div`
+  border: 1px solid black;
+  width: 500px;
+  height: 500px;
+  background: white;
+  border-radius: 5%;
+  box-shadow: 5px 10px;
+
+  //   transform: scale(.9);
+`;
+
+const Wrap = styled.div`
   padding: 20px;
-
-  height: 100%;
 `;
 
-const Customdivform = styled.div`
-  // border: 2px solid green;
-  marign: 30x;
-  display: inline-block;
-  padding: 20px;
+const AnotherWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-const CustomButton = styled.div`
-  // width:50px;
-  // border: 2px solid red;
-`;
-
-const CustomeHeading = styled.h1`
-  font-weight:400;
-  font-size: 50px;
-  font-style:underline;
-
-`
 
 
 export default Contact;
