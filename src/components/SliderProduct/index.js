@@ -18,7 +18,7 @@ const ImageSlider = () => {
   return (
     <Carousel {...settings}>
       <Wraps>
-        <Customred>
+        <Customred >
           <img
             src="https://i5.walmartimages.com/asr/e905ad27-5cc2-42ec-a823-2de4d12c2c8a.f930a9e0ddfe273015986dd73733b1be.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"
             alt="No image"
@@ -48,7 +48,7 @@ const ImageSlider = () => {
         </Customred>
       </Wraps>
       <Wraps>
-        <Customred>
+        <Customred >
           <img
             src="https://i5.walmartimages.com/asr/8bb5e083-82de-44a1-89d6-c88109051785.296f871a76c999c568b0fd7e5711eedf.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"
             alt="No image"
