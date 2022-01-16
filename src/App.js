@@ -10,6 +10,7 @@ import Contact from './components/Contact'
 import About from './components/About'
 import Landing from './components/Landing'
 import AdminPage from './components/AdminPanel'
+import LoginPage from './components/Login'
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
           <Route path="/contact" element={<Contact/>} />
 
           <Route path="/admin-panel" element={<AdminPage/>} />
+
+          <Route path='/login' element={<LoginPage img="simplebackground.jpg"/>} />
 
           <Route path="*" element={<Error errormessage="Page Not found"/>}/>
 
