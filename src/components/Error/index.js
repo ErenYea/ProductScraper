@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Navigate } from "react-router-dom";
 
-const Error = () => {
+const Error = ({ errormessage }) => {
   const [number, setnumber] = useState(5);
   const [redirect, setredirect] = useState(false);
   useEffect(() => {
@@ -15,17 +15,14 @@ const Error = () => {
   }, [number]);
 
   if (redirect) {
-    return (
-        <div className="container">
-            <Navigate to="/" />
-        </div>
-    );
+    return <Navigate to="/" />;
   } else {
     return (
-
-        <div className="container">
-            <CustomError>Error Page not found Redirecting in {number}</CustomError>
-        </div>
+      <div className="container">
+        <CustomError>
+          Error <strong>{errormessage}</strong> Redirecting in {number}
+        </CustomError>
+      </div>
     );
   }
 };

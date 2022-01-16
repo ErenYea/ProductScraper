@@ -9,6 +9,7 @@ import Error from './components/Error'
 import Contact from './components/Contact'
 import About from './components/About'
 import Landing from './components/Landing'
+import AdminPage from './components/AdminPanel'
 
 function App() {
   return (
@@ -25,8 +26,9 @@ function App() {
 
           <Route path="/contact" element={<Contact/>} />
 
+          <Route path="/admin-panel" element={<AdminPage/>} />
 
-          <Route path="*" element={<Error/>}/>
+          <Route path="*" element={<Error errormessage="Page Not found"/>}/>
 
         </Routes>
       </Router>
