@@ -12,15 +12,15 @@ function Header() {
 //   console.log(cars);
   return (
     <Container>
-      <a>
+      <a href='/'>
         <img src="/images/logo.jpeg" alt="" width="100px"/>
       </a>
       <Menu>
         <Search/>
       </Menu>
       <RightMenu>
-        <a href="#">About Us</a>
-        <a href="#">Contact Us</a>
+        <a href="/about">About Us</a>
+        <a href="/contact">Contact Us</a>
         <CustomMenu onClick={() => setBurgerOpen(!BurgerOpen)} ></CustomMenu>
       </RightMenu>
       <BurgerNavbar close={BurgerOpen}>
