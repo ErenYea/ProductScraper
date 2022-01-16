@@ -153,7 +153,14 @@ p {
   max-width: var(--max-width);
   /* border: 2px solid black; */
 }
-
+.slick-prev:before,
+.slick-next:before {
+  color: black !important;
+}
+/* .slick-slide{
+  margin-left: 10px;
+  margin-right: 10px
+} */
 
 
 @media screen and (min-width: 992px) {

@@ -2,6 +2,11 @@ import React from 'react'
 import Product from './Product'
 import { useFetch } from '../customhook/2-useFetch'
 import styled from 'styled-components'
+import Slider from '../SliderProduct'
+import "slick-carousel/slick/slick.css";
+
+import "slick-carousel/slick/slick-theme.css";
+
 
 // ATTENTION!!!!!!!!!!
 // I SWITCHED TO PERMANENT DOMAIN
@@ -22,6 +27,7 @@ const Index = () => {
             return <Product key={product.id} {...product} />
           })}
         </section>
+        <Slider/>
       </CustomDiv>
     </div>
     
