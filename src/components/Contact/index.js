@@ -18,6 +18,7 @@ const Contact = () => {
   return (
     <div className="container">
       <CustomForm>
+        <CustomeHeading>Contact US</CustomeHeading>
         <Customdivform>
           <FormControl>
             <InputLabel htmlFor="my-email">Email address</InputLabel>
@@ -39,17 +40,26 @@ const Contact = () => {
             <InputLabel htmlFor="my-message">Message</InputLabel>
             <Input
               id="my-message"
-              
               value={text}
               onChange={(e) => setText(e.target.value)}
               fullWidth
+              autoComplete
+              multiline
+              required
             />
           </FormControl>
         </Customdivform>
 
-        <Button variant="contained" onClick={getMessage}>
-          Submit
-        </Button>
+        <CustomButton>
+          <Button
+            variant="contained"
+            onClick={getMessage}
+            size="medium"
+            color="primary"
+          >
+            Submit
+          </Button>
+        </CustomButton>
       </CustomForm>
     </div>
   );
@@ -57,13 +67,33 @@ const Contact = () => {
 
 const CustomForm = styled.div`
   margin-top: 100px;
-  // display:flex;
+  display: flex;
+  flex-direction: column;
+  // border: 2px solid red;
+  justify-content: center;
+  padding: 20px;
+
+  height: 100vh;
 `;
 
 const Customdivform = styled.div`
-    
+  // border: 2px solid green;
+  marign: 30x;
+  display: inline-block;
+  padding: 20px;
+`;
 
+const CustomButton = styled.div`
+  // width:50px;
+  // border: 2px solid red;
+`;
+
+const CustomeHeading = styled.h1`
+  font-weight:400;
+  font-size: 50px;
+  font-style:underline;
 
 `
+
 
 export default Contact;
