@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Cookies from 'universal-cookie';
 
 import ErrorPage from '../Error'
+import Tables from './table';
 
 
 const AdminPanel = ()=>{
@@ -20,9 +21,15 @@ const AdminPanel = ()=>{
 
     if (adminrights) {
         return(
-            <div className="container">
-                <h2>Admin Page</h2>
-            </div>
+            <main>
+                <section className="containers">
+                    <div className="title">
+                    <h2>Admin</h2>
+                    <div className="underline"></div>
+                    </div>
+                    <Tables />
+                </section>
+            </main>
         )
     } else {
         return(
