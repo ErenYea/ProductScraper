@@ -412,10 +412,7 @@ p {
   width: 80vw;
   max-width: var(--fixed-width);
 }
-.containerss {
-  width: 80vw;
-  max-width: var(--fixed-width);
-}
+
 main {
   min-height: 100vh;
   display: grid;
