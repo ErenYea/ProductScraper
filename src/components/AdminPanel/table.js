@@ -19,8 +19,8 @@ const Tables = () =>{
     if (loading){
         return (
             <div className="container">
-                <Box sx={{ display: 'flex' }}>
-                <CircularProgress />
+                <Box sx={{ display: 'flex' , justifyContent: 'center'}}>
+                    <CircularProgress />
                 </Box>
             </div>
         )
@@ -28,6 +28,7 @@ const Tables = () =>{
         console.log(products[0].data[0]);
         return (
             <div className="review">
+                
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 850 }} aria-label="simple table">
                         <TableHead>
