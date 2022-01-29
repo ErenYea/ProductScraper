@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import {
+  Link
+} from "react-router-dom";
 
 
 import Search from '../Search'
@@ -14,16 +17,16 @@ function Header() {
 //   console.log(cars);
   return (
     <Container>
-      <a href='/'>
+      <Link to='/'>
         <img src="/images/logo.jpeg" alt="" width="100px"/>
-      </a>
+      </Link>
       <Menu>
         <Search/>
       </Menu>
       <RightMenu>
-        <a href="/product">Product</a>
-        <a href="/about">About Us</a>
-        <a href="/contact">Contact Us</a>
+        <Link to="/product">Product</Link>
+        <Link to="/about">About Us</Link>
+        <Link to="/contact">Contact Us</Link>
         <CustomMenu onClick={() => setBurgerOpen(!BurgerOpen)} ></CustomMenu>
       </RightMenu>
       <BurgerNavbar close={BurgerOpen}>
@@ -32,7 +35,7 @@ function Header() {
         </CloseWrapper>
 
         <li>
-          <a href="/login">Login</a>
+          <Link to="/login">Login</Link>
         </li>
         {/* <li>
           <a href="#">Existing Inventory</a>

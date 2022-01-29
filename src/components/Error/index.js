@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const Error = ({ errormessage }) => {
   const [number, setnumber] = useState(5);
@@ -15,7 +16,7 @@ const Error = ({ errormessage }) => {
   }, [number]);
 
   if (redirect) {
-    return <Navigate to="/" />;
+    return <Redirect to="/" />;
   } else {
     return (
       <div className="container">

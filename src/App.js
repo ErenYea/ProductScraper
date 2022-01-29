@@ -1,7 +1,12 @@
 import React from "react";
 
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import Header from "./components/Header/Header";
 import Product from "./components/Products";
 import Error from './components/Error'
@@ -16,23 +21,37 @@ function App() {
     <div className="App">
       <Router>
         <Header></Header>
-        <Routes>
-          <Route path="/product" element={<Product/>} />
+        <Switch>
+          <Route path="/product">
+            <Product />
+          </Route>
 
 
-          <Route exact path="/" element={<Landing/>} />
+          <Route exact path="/" >
+            <Landing />
+          </Route>
       
-          <Route path="/about" element={<About/>} />
+          <Route path="/about">
+            <About />
+          </Route>
 
-          <Route path="/contact" element={<Contact img="simplebackground.jpg"/>} />
+          <Route path="/contact" >
+            <Contact img="simplebackground.jpg"/>
+          </Route>
 
-          <Route path="/admin-panel" element={<AdminPage/>} />
+          <Route path="/admin-panel" >
+            <AdminPage/>
+          </Route>
 
-          <Route path='/login' element={<LoginPage img="simplebackground.jpg"/>} />
+          <Route path='/login' >
+            <LoginPage img="simplebackground.jpg"/>
+          </Route>
 
-          <Route path="*" element={<Error errormessage="Page Not found"/>}/>
+          <Route path="*">
+            <Error errormessage="Page Not found"/>
+          </Route>
 
-        </Routes>
+        </Switch>
       </Router>
       
       
