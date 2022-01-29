@@ -22,7 +22,7 @@ const AdminPanel = ()=>{
     if (adminrights) {
         return(
             <main>
-                <section className="containers">
+                <section className="container">
                     <div className="title">
                     <h2>Admin</h2>
                     <div className="underline"></div>
