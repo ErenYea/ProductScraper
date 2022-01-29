@@ -34,7 +34,7 @@ function Header() {
         <li>
           <a href="/login">Login</a>
         </li>
-        <li>
+        {/* <li>
           <a href="#">Existing Inventory</a>
         </li>
         <li>
@@ -51,7 +51,7 @@ function Header() {
         </li>
         <li>
           <a href="#">Existing Inventory</a>
-        </li>
+        </li> */}
       </BurgerNavbar>
     </Container>
   );

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Cookies from 'universal-cookie';
+import Axios from "axios";
 
 import FormControl from "@mui/material/FormControl";
 
@@ -9,12 +11,27 @@ import TextField from "@mui/material/TextField";
 const LoginPage = ({img}) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-
+  const cookies = new Cookies();
   const [show, setShow] = useState(false);
 
   //   console.log(password);
+
+  const getuser = async (username,password) => {
+      const respnce = await Axios.post('http://localhost:3001/user',{username: username, password: password}).catch((error)=>{
+      console.log(error);
+    });
+      console.log(respnce);
+  }
   const login = () => {
     console.log(username, password);
+    
+    cookies.set('username', username, { path: '/' });  
+    cookies.set('password', password, { path: '/' });  
+    console.log(cookies.get('username')); 
+    console.log(cookies.get('password')); 
+    getuser(username, password)
+    // const respnce = Axios.post('http://localhost:3001/users',{username: username, password: password});
+    // console.log(respnce);
   };
 
   return (
