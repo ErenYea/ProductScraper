@@ -1,14 +1,54 @@
 import TextField from "@mui/material/TextField";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from 'styled-components'
 import SearchIcon from '@mui/icons-material/Search';
+import Axios from "axios";
+import { Redirect } from "react-router-dom";
+
+
 
 const Search = () => {
     const [text,setText] = useState('')
+    const [dataexist,setdataexist] = useState(false)
+    const [data,setdata] = useState("")
+    var resp;
+    const getdata = async (te) => {
+        Axios.post("http://localhost:3001/search", {
+            te:te
+        }).then((response) => {
+            console.log("hamza");
+            console.log(response.data.data);
+            setdata(response.data[0].data)
+            resp =  response
+        })
+        // console.log(respnce);
+        
+        // return respnce;
+    };
     const Searchthis = (te) =>{
         console.log(te)
+        getdata(te)
+        // if (resp == undefined){
+        //     Searchthis(te)
+        // }
+        // console.log(resp);
+        if (resp == undefined){
+            setTimeout(() =>{
+                // console.log(resp);
+                setdataexist(true)
+                // setdata(resp)
+            },2000)
+        }
+        
     }
-  
+    useEffect(() => {
+        console.log(data);
+
+    },[resp,dataexist,data])
+  if (data != ""){
+      return(<Redirect to={{ pathname:'/singleproduct', state:data}}/>)
+  }else{
+      
   return (
       <CustomSearch>
           
@@ -24,6 +64,7 @@ const Search = () => {
       </CustomSearch>
   );
 };
+}
 const CustomSearch = styled.div`
     background:white;
     border-radius:20px; 

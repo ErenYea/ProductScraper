@@ -14,6 +14,7 @@ import About from './components/About'
 import Landing from './components/Landing'
 import AdminPage from './components/AdminPanel'
 import LoginPage from './components/Login'
+import SingleProduct from './components/SingleProduct'
 
 function App() {
   return (
@@ -21,9 +22,9 @@ function App() {
       <Router>
         <Header></Header>
         <Switch>
-          <Route path="/product">
-            <Product />
-          </Route>
+          <Route path="/product" render={(props)=> <Product {...props}/>}/>
+            
+          <Route path="/singleproduct" render={(props)=> <SingleProduct {...props}/>} /> 
 
 
           <Route exact path="/" >
