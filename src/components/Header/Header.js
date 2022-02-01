@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useLocation } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import Cookies from 'universal-cookie';
+import { useHistory } from "react-router-dom";
 
 import Search from "../Search";
 
@@ -12,13 +13,30 @@ function Header() {
   const [BurgerOpen, setBurgerOpen] = useState(false);
   const location = useLocation();
   const cookies = new Cookies();
+  let history = useHistory();
   // console.log(location.pathname);
   let search = true
-  if (location.pathname == '/admin-panel'){
+  if (location.pathname === '/admin-panel'){
     search = false;
   }else{
     search = true;
   }
+  let prevLocation;
+  useEffect(() => {
+    history.listen(nextLocation => {
+    console.log(prevLocation);
+    
+    if ((prevLocation !== undefined) && (prevLocation.pathname === '/login')){
+      setBurgerOpen(false)
+    }
+    // ...
+    prevLocation = nextLocation;
+  });
+    
+  },[history])
+  
+  
+  
 
   if ((location.pathname == "/login")) {
     return (<></>);

@@ -5,7 +5,8 @@ import Product from '../Products';
 
 
 const Landing = () =>{
-
+    
+    
     return(
         <div className="container">
             <SingleSLider></SingleSLider>

@@ -16,14 +16,17 @@ const LoginPage = ({ img }) => {
   const [show, setShow] = useState(false);
   const [loginuser, setLoginuser] = useState(false);
   const [redirect, setredirect] = useState(false);
+  const [redirectuser,setredirectuser] = useState(false);
 
   useEffect(()=>{
     if (cookies.get("username") != undefined) {
     setLoginuser(true);
     
+    
   } else {
     setLoginuser(false);
     setredirect(false);
+    setredirectuser(false)
   }
   },[loginuser,redirect])
 
@@ -48,6 +51,11 @@ const LoginPage = ({ img }) => {
     console.log(cookies.get("username"));
     console.log(cookies.get("password"));
     getuser(username, password);
+    if (username=='admin') {
+      setredirectuser(false)
+    }else{
+      setredirectuser(true)
+    }
     setLoginuser(true)
     // const respnce = Axios.post('http://localhost:3001/users',{username: username, password: password});
     // console.log(respnce);
@@ -64,7 +72,17 @@ const LoginPage = ({ img }) => {
     
     return(
     <Redirect to="/admin-panel" />)
-  }else if (loginuser) {
+  }else if(redirectuser){
+    cookies.set('path','/login',{path:"/"}) 
+    return (<Redirect to="/" />)
+  }
+  
+  
+  
+  else if (loginuser) {
+    if (cookies.get('path')!=undefined){
+      cookies.remove('path');
+    }
     return(
       <CustomDiv>
         <AnotherDiv className="review">
