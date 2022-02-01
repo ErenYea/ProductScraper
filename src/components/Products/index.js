@@ -14,7 +14,7 @@ import Box from '@mui/material/Box';
 
 
 const Index = ( {property}) => {
-  const {loading,products} = useFetch('http://localhost:3001/data')
+  const {loading,products} = useFetch('http://localhost:3001/table')
   if (loading) {
     return(
       <div className="container">
@@ -35,8 +35,8 @@ const Index = ( {property}) => {
         <CustomDiv> 
           <CustomHeading>Products</CustomHeading>
           <section className='products'  style={{ gridTemplateColumns: `${property}`}}>
-            {products.data.map((product) => {
-              return <Product key={product.id} {...product} />
+            {products[0].data[0].map((product) => {
+              return <Product key={product.item_number} {...product} />
             })}
           </section>
           <CustomHeading>
