@@ -33,7 +33,7 @@ const AdminPanel = ()=>{
         )
     } else {
         return(
-            <ErrorPage errormessage="Don't Have Admin Rights"></ErrorPage>
+            <ErrorPage errormessage="Don't Have Admin Rights" redire="login"></ErrorPage>
         )
     }
 

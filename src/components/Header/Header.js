@@ -1,43 +1,52 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useLocation } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
-import {
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-
-import Search from '../Search'
+import Search from "../Search";
 
 function Header() {
   const [BurgerOpen, setBurgerOpen] = useState(false);
-  
+  const location = useLocation();
+  // console.log(location.pathname);
+  let search = true
+  if (location.pathname == '/admin-panel'){
+    search = false;
+  }else{
+    search = true;
+  }
 
-//   const cars = useSelector(selectCars);
-//   console.log(cars);
-  return (
-    <Container>
-      <Link to='/'>
-        <img src="/images/logo.jpeg" alt="" width="100px"/>
-      </Link>
-      <Menu>
-        <Search/>
-      </Menu>
-      <RightMenu>
-        <Link to="/product">Product</Link>
-        <Link to="/about">About Us</Link>
-        <Link to="/contact">Contact Us</Link>
-        <CustomMenu onClick={() => setBurgerOpen(!BurgerOpen)} ></CustomMenu>
-      </RightMenu>
-      <BurgerNavbar close={BurgerOpen}>
-        <CloseWrapper>
-          <CustomClose onClick={() => setBurgerOpen(!BurgerOpen)} sx={{ color: "black" }}></CustomClose>
-        </CloseWrapper>
+  // if ((location.pathname == "/admin-panel")) {
+  //   return (<></>);
+  // } else {
+    return (
+      <Container>
+        <Link to="/">
+          <img src="/images/logo.jpeg" alt="" width="100px" />
+        </Link>
+        <Menu>
+          {search?<Search/>:""}
+        </Menu>
+        <RightMenu>
+          <Link to="/product">Product</Link>
+          <Link to="/about">About Us</Link>
+          <Link to="/contact">Contact Us</Link>
+          <CustomMenu onClick={() => setBurgerOpen(!BurgerOpen)}></CustomMenu>
+        </RightMenu>
+        <BurgerNavbar close={BurgerOpen}>
+          <CloseWrapper>
+            <CustomClose
+              onClick={() => setBurgerOpen(!BurgerOpen)}
+              sx={{ color: "black" }}
+            ></CustomClose>
+          </CloseWrapper>
 
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-        {/* <li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          {/* <li>
           <a href="#">Existing Inventory</a>
         </li>
         <li>
@@ -55,14 +64,16 @@ function Header() {
         <li>
           <a href="#">Existing Inventory</a>
         </li> */}
-      </BurgerNavbar>
-    </Container>
-  );
+        </BurgerNavbar>
+      </Container>
+    );
+  // }
+
+  //   const cars = useSelector(selectCars);
+  //   console.log(cars);
 }
 
 export default Header;
-
-
 
 const Container = styled.div`
   min-height: 60px;
@@ -77,20 +88,18 @@ const Container = styled.div`
   z-index: 1;
   // border: 2px solid red;
   // background:#282A35;
-  background:#0071dc;
-  color:white;
+  background: #0071dc;
+  color: white;
 `;
 
 const Menu = styled.div`
   // border:2px solid green;
   display: flex;
-  width:500px;
+  width: 500px;
   align-items: center;
   justify-content: center;
   flex: 1;
-  padding-x:0px 10px;
-  
-  
+  padding-x: 0px 10px;
 `;
 
 const RightMenu = styled.div`
@@ -100,13 +109,12 @@ const RightMenu = styled.div`
     font-weight: 600;
     text-transform: uppercase;
     margin-right: 10px;
-    color:white !important;
+    color: white !important;
   }
-  a:hover{
+  a:hover {
     font-weight: 600;
-    color:#2196f3 !important;
+    color: #2196f3 !important;
   }
-  
 `;
 
 const CustomMenu = styled(MenuIcon)`

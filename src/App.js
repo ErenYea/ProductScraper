@@ -48,7 +48,7 @@ function App() {
           </Route>
 
           <Route path="*">
-            <Error errormessage="Page Not found"/>
+            <Error errormessage="Page Not found" redire=""/>
           </Route>
 
         </Switch>
