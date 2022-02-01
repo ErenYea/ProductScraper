@@ -18,9 +18,9 @@ function Header() {
     search = true;
   }
 
-  // if ((location.pathname == "/admin-panel")) {
-  //   return (<></>);
-  // } else {
+  if ((location.pathname == "/login")) {
+    return (<></>);
+  } else {
     return (
       <Container>
         <Link to="/">
@@ -67,7 +67,7 @@ function Header() {
         </BurgerNavbar>
       </Container>
     );
-  // }
+  }
 
   //   const cars = useSelector(selectCars);
   //   console.log(cars);
