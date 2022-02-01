@@ -61,4 +61,7 @@ const CustomDiv = styled.div`
   margin-top:100px;
   
 `
-export default Index
+export default Index;
+
+
+
