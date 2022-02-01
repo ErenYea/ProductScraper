@@ -4,12 +4,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useLocation } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
+import Cookies from 'universal-cookie';
 
 import Search from "../Search";
 
 function Header() {
   const [BurgerOpen, setBurgerOpen] = useState(false);
   const location = useLocation();
+  const cookies = new Cookies();
   // console.log(location.pathname);
   let search = true
   if (location.pathname == '/admin-panel'){
@@ -44,7 +46,8 @@ function Header() {
           </CloseWrapper>
 
           <li>
-            <Link to="/login">Login</Link>
+            {cookies.get('username')!=undefined?<Link to="/login">{cookies.get('username')}</Link>:<Link to="/login">Login</Link>}
+            
           </li>
           {/* <li>
           <a href="#">Existing Inventory</a>

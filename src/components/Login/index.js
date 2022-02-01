@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 import Axios from "axios";
 
 import FormControl from "@mui/material/FormControl";
@@ -8,35 +8,80 @@ import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
-const LoginPage = ({img}) => {
+const LoginPage = ({ img }) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const cookies = new Cookies();
   const [show, setShow] = useState(false);
+  const [loginuser, setLoginuser] = useState(false);
+
+  useEffect(()=>{
+    if (cookies.get("username") != undefined) {
+    setLoginuser(true);
+  } else {
+    setLoginuser(false);
+  }
+  },[loginuser])
+
+  
 
   //   console.log(password);
 
-  const getuser = async (username,password) => {
-      const respnce = await Axios.post('http://localhost:3001/user',{username: username, password: password}).catch((error)=>{
+  const getuser = async (username, password) => {
+    const respnce = await Axios.post("http://localhost:3001/user", {
+      username: username,
+      password: password,
+    }).catch((error) => {
       console.log(error);
     });
-      console.log(respnce);
-  }
+    console.log(respnce);
+  };
   const login = () => {
     console.log(username, password);
-    
-    cookies.set('username', username, { path: '/' });  
-    cookies.set('password', password, { path: '/' });  
-    console.log(cookies.get('username')); 
-    console.log(cookies.get('password')); 
-    getuser(username, password)
+
+    cookies.set("username", username, { path: "/" });
+    cookies.set("password", password, { path: "/" });
+    console.log(cookies.get("username"));
+    console.log(cookies.get("password"));
+    getuser(username, password);
+    setLoginuser(true)
     // const respnce = Axios.post('http://localhost:3001/users',{username: username, password: password});
     // console.log(respnce);
   };
 
-  return (
+  const logout = ()=>{
+    cookies.remove('username');
+    cookies.remove('password');
+    console.log(cookies.get('username'));
+    setLoginuser(false);
+    
+  }
 
-      <CustomDiv img={img}>
+  if (loginuser) {
+    return(
+      <CustomDiv>
+        <AnotherDiv className="review">
+          <CustomHeading>Already Login</CustomHeading>
+          <Wrap>
+            <h3>Username:</h3>
+            <h4>{cookies.get('username')}</h4>
+          </Wrap>
+          <Wrap>
+            <Button
+              variant="contained"
+              onClick={logout}
+              size="medium"
+              color="primary"
+            >
+              Logout
+            </Button>
+          </Wrap>
+        </AnotherDiv>
+      </CustomDiv>
+    );
+  } else {
+    return (
+      <CustomDiv>
         <AnotherDiv className="review">
           <CustomHeading>Login</CustomHeading>
           <Wrap>
@@ -86,22 +131,22 @@ const LoginPage = ({img}) => {
           </Wrap>
         </AnotherDiv>
       </CustomDiv>
- 
-  );
+    );
+  }
 };
 
 const CustomDiv = styled.div`
   margin-top: 60px;
-//   border: 2px solid red;
+  //   border: 2px solid red;
   align-items: center;
-  // background-image: ${(props)=>`url('/images/${props.img}')`};
+  // background-image: ${(props) => `url('/images/${props.img}')`};
   // background-size: cover;
   // background-position: center;
   // backgroung-repeat: no-repeat;
   justify-content: center;
   display: flex;
   height: 697px;
-//   background: grey;
+  //   background: grey;
 `;
 
 const CustomHeading = styled.h1`
