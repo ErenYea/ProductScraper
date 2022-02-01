@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Cookies from "universal-cookie";
 import Axios from "axios";
-
+import { Redirect } from "react-router-dom";
 import FormControl from "@mui/material/FormControl";
 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import { red } from "@mui/material/colors";
 
 const LoginPage = ({ img }) => {
   const [password, setPassword] = useState("");
@@ -14,14 +15,17 @@ const LoginPage = ({ img }) => {
   const cookies = new Cookies();
   const [show, setShow] = useState(false);
   const [loginuser, setLoginuser] = useState(false);
+  const [redirect, setredirect] = useState(false);
 
   useEffect(()=>{
     if (cookies.get("username") != undefined) {
     setLoginuser(true);
+    
   } else {
     setLoginuser(false);
+    setredirect(false);
   }
-  },[loginuser])
+  },[loginuser,redirect])
 
   
 
@@ -56,15 +60,28 @@ const LoginPage = ({ img }) => {
     setLoginuser(false);
     
   }
-
-  if (loginuser) {
+  if (redirect){
+    
+    return(
+    <Redirect to="/admin-panel" />)
+  }else if (loginuser) {
     return(
       <CustomDiv>
         <AnotherDiv className="review">
-          <CustomHeading>Already Login</CustomHeading>
+          <CustomHeading>Login As</CustomHeading>
           <Wrap>
             <h3>Username:</h3>
             <h4>{cookies.get('username')}</h4>
+          </Wrap>
+          <Wrap>
+            {cookies.get('username')=='admin'?<Button
+              variant="contained"
+              onClick={()=>setredirect(true)}
+              size="medium"
+              color="primary"
+            >
+              Admin Panel
+            </Button>:""}
           </Wrap>
           <Wrap>
             <Button
