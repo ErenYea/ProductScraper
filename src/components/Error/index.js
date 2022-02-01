@@ -21,7 +21,7 @@ const Error = ({ errormessage,redire }) => {
     return (
       <div className="container">
         <CustomError>
-          Error <strong>{errormessage}</strong> Redirecting to {redire} page in {number}
+          Error <strong>{errormessage}</strong> Redirecting to {redire===""?"/":redire} page in {number}
         </CustomError>
       </div>
     );
