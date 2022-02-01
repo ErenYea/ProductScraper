@@ -11,7 +11,7 @@ const Search = () => {
     const [text,setText] = useState('')
     const [dataexist,setdataexist] = useState(false)
     const [data,setdata] = useState("")
-    var resp;
+    var resp='';
     const getdata = async (te) => {
         Axios.post("http://localhost:3001/search", {
             te:te
@@ -42,7 +42,9 @@ const Search = () => {
         
     }
     useEffect(() => {
-        console.log(data);
+        if (resp==""){
+            setdata("")
+        }
 
     },[resp,dataexist,data])
   if (data != ""){
