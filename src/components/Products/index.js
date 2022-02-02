@@ -15,6 +15,36 @@ import Box from '@mui/material/Box';
 
 
 const Index = ( props ) => {
+  if (props.location.state!=undefined) {
+    if (props.location.state.length ==0 ){
+      return (
+        <div className="container">
+          <CustomDiv >
+            <CustomHeading>No Products</CustomHeading>
+          </CustomDiv>
+        </div>
+      )
+    }else{
+    // var result = props.location.state;
+    // var product_title = result.shift()
+    // console.log(result);
+    // console.log(product_title);
+    return (
+      <div className="container">
+
+      
+        <CustomDiv> 
+          <CustomHeading>Products</CustomHeading>
+          <section className='products'  style={{ gridTemplateColumns: `${props.property}`}}>
+            {props.location.state.map((product)=>{
+              return <Product key={product.item_number} {...product} />
+            })}
+          </section>
+          
+        </CustomDiv>
+      </div>
+    )
+  }}else{
   // console.log(props);
   // console.log("ham");
   // const products = useContext(UserContext)
@@ -52,7 +82,7 @@ const Index = ( props ) => {
     
   )
 }
-  // }
+  }
   
 const CustomHeading = styled.h1`
 //   border:2px solid green;

@@ -1,16 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import defaultImage from "../../assets/default-image.jpeg";
+import styled from 'styled-components'
 
-const Product = ({ item_number, product_title, product_url, image_url, price }) => {
+const Product = ({ item_number, product_title, product_url, image_url, price , searchby}) => {
   const url = image_url;
   return (
     <article className="product review custom" >
-      <a href={product_url} target="_blank">
+      <CustomDiv onClick={()=>searchby(product_title)}>
         <img src={url || defaultImage} alt={product_title} />
         <h4>{product_title}</h4>
         <p>{price || ""}</p>
-      </a>
+      </CustomDiv>
     </article>
   );
 };
@@ -26,5 +27,10 @@ Product.prototype = {
 //   price:3.99,
 //   image:defaultImage
 // }
+
+const CustomDiv = styled.div`
+  
+  
+`
 
 export default Product;
