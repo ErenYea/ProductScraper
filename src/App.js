@@ -1,31 +1,57 @@
 import React from "react";
-import logo from "./logo.svg";
-import { Counter } from "./features/counter/Counter";
+
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 import Header from "./components/Header/Header";
 import Product from "./components/Products";
 import Error from './components/Error'
 import Contact from './components/Contact'
 import About from './components/About'
-
+import Landing from './components/Landing'
+import AdminPage from './components/AdminPanel'
+import LoginPage from './components/Login'
+import SingleProduct from './components/SingleProduct'
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Header></Header>
-        <Routes>
-          <Route exact path="/" element={<Product/>} />
+        <Switch>
+          <Route path="/product" render={(props)=> <Product {...props}/>}/>
+            
+          <Route path="/singleproduct" render={(props)=> <SingleProduct {...props}/>} /> 
+
+
+          <Route exact path="/" >
+            <Landing />
+          </Route>
       
-          <Route path="/about" element={<About/>} />
+          <Route path="/about">
+            <About />
+          </Route>
 
-          <Route path="/contact" element={<Contact/>} />
+          <Route path="/contact" >
+            <Contact img="simplebackground.jpg"/>
+          </Route>
 
+          <Route path="/admin-panel" >
+            <AdminPage/>
+          </Route>
 
-          <Route path="*" element={<Error/>}/>
+          <Route path='/login' >
+            <LoginPage img="simplebackground.jpg"/>
+          </Route>
 
-        </Routes>
+          <Route path="*">
+            <Error errormessage="Page Not found" redire=""/>
+          </Route>
+
+        </Switch>
       </Router>
       
       

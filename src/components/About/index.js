@@ -1,25 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
+import Review from "./Info";
 
-
-const About = () =>{
-
-
-    return(
-        <div className="container">
-            <CustomForm>
-                <h4>HAMZA</h4>
-
-            </CustomForm>
+const About = () => {
+  return (
+    <main>
+      <section className="containers">
+        <div className="title">
+          <h2>About US</h2>
+          <div className="underline"></div>
         </div>
-    )
-}
+        <Review />
+      </section>
+    </main>
+  );
+};
 
-const CustomForm = styled.div`
-    
-
-
-`
-
+const CustomForm = styled.div``;
 
 export default About;

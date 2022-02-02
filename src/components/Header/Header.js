@@ -1,34 +1,73 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useLocation } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
-// import { selectCars } from "../features/car/carSlice";
-import { useSelector } from "react-redux";
-import Search from '../Search'
+import { Link } from "react-router-dom";
+import Cookies from 'universal-cookie';
+import { useHistory } from "react-router-dom";
+
+import Search from "../Search";
 
 function Header() {
   const [BurgerOpen, setBurgerOpen] = useState(false);
-//   const cars = useSelector(selectCars);
-//   console.log(cars);
-  return (
-    <Container>
-      <a>
-        <img src="/images/logo.jpeg" alt="" width="100px"/>
-      </a>
-      <Menu>
-        <Search/>
-      </Menu>
-      <RightMenu>
-        <a href="#">About Us</a>
-        <a href="#">Contact Us</a>
-        <CustomMenu onClick={() => setBurgerOpen(!BurgerOpen)} ></CustomMenu>
-      </RightMenu>
-      <BurgerNavbar close={BurgerOpen}>
-        <CloseWrapper>
-          <CustomClose onClick={() => setBurgerOpen(!BurgerOpen)} sx={{ color: "black" }}></CustomClose>
-        </CloseWrapper>
+  const location = useLocation();
+  const cookies = new Cookies();
+  let history = useHistory();
+  // console.log(location.pathname);
+  let search = true
+  if (location.pathname === '/admin-panel'){
+    search = false;
+  }else{
+    search = true;
+  }
+  let prevLocation;
+  useEffect(() => {
+    history.listen(nextLocation => {
+    console.log(prevLocation);
+    
+    if ((prevLocation !== undefined) && (prevLocation.pathname === '/login')){
+      setBurgerOpen(false)
+    }
+    // ...
+    prevLocation = nextLocation;
+  });
+    
+  },[history])
+  
+  
+  
 
-        <li>
+  if ((location.pathname == "/login")) {
+    return (<></>);
+  } else {
+    return (
+      <Container>
+        <Link to="/">
+          <img src="/images/logo.jpeg" alt="" width="100px" />
+        </Link>
+        <Menu>
+          {search?<Search/>:""}
+        </Menu>
+        <RightMenu>
+          <Link to="/product">Product</Link>
+          <Link to="/about">About Us</Link>
+          <Link to="/contact">Contact Us</Link>
+          <CustomMenu onClick={() => setBurgerOpen(!BurgerOpen)}></CustomMenu>
+        </RightMenu>
+        <BurgerNavbar close={BurgerOpen}>
+          <CloseWrapper>
+            <CustomClose
+              onClick={() => setBurgerOpen(!BurgerOpen)}
+              sx={{ color: "black" }}
+            ></CustomClose>
+          </CloseWrapper>
+
+          <li>
+            {cookies.get('username')!=undefined?<Link to="/login">{cookies.get('username')}</Link>:<Link to="/login">Login</Link>}
+            
+          </li>
+          {/* <li>
           <a href="#">Existing Inventory</a>
         </li>
         <li>
@@ -45,13 +84,14 @@ function Header() {
         </li>
         <li>
           <a href="#">Existing Inventory</a>
-        </li>
-        <li>
-          <a href="#">Existing Inventory</a>
-        </li>
-      </BurgerNavbar>
-    </Container>
-  );
+        </li> */}
+        </BurgerNavbar>
+      </Container>
+    );
+  }
+
+  //   const cars = useSelector(selectCars);
+  //   console.log(cars);
 }
 
 export default Header;
@@ -68,26 +108,19 @@ const Container = styled.div`
   right: 0;
   z-index: 1;
   // border: 2px solid red;
-  background:#282A35;
-  color:white;
+  // background:#282A35;
+  background: #0071dc;
+  color: white;
 `;
 
 const Menu = styled.div`
   // border:2px solid green;
   display: flex;
+  width: 500px;
   align-items: center;
   justify-content: center;
   flex: 1;
-  padding-x:0px 10px;
-  a {
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 0 10px;
-    flex-wrap: nowrap;
-  }
-  @media (max-width: 768px) {
-    display: none;
-  }
+  padding-x: 0px 10px;
 `;
 
 const RightMenu = styled.div`
@@ -97,13 +130,12 @@ const RightMenu = styled.div`
     font-weight: 600;
     text-transform: uppercase;
     margin-right: 10px;
-    color:white !important;
+    color: white !important;
   }
-  a:hover{
+  a:hover {
     font-weight: 600;
-    color:#2196f3 !important;
+    color: #2196f3 !important;
   }
-  
 `;
 
 const CustomMenu = styled(MenuIcon)`

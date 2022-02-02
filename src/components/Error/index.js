@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
-const Error = () => {
+const Error = ({ errormessage,redire }) => {
   const [number, setnumber] = useState(5);
   const [redirect, setredirect] = useState(false);
   useEffect(() => {
@@ -15,17 +16,14 @@ const Error = () => {
   }, [number]);
 
   if (redirect) {
-    return (
-        <div className="container">
-            <Navigate to="/" />
-        </div>
-    );
+    return <Redirect to={`/${redire}`} />;
   } else {
     return (
-
-        <div className="container">
-            <CustomError>Error Page not found Redirecting in {number}</CustomError>
-        </div>
+      <div className="container">
+        <CustomError>
+          Error <strong>{errormessage}</strong> Redirecting to {redire===""?"/":redire} page in {number}
+        </CustomError>
+      </div>
     );
   }
 };
