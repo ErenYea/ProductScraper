@@ -13,7 +13,15 @@ import Box from '@mui/material/Box';
 
 const Index = ( props ) => {
 
-
+  if (props.location.state.length == 0){
+    return(
+      <div className="container">
+        <CustomDiv>
+          <CustomHeading>No Products</CustomHeading>
+        </CustomDiv>
+      </div>
+    )
+  }
     // console.log(props.location.state)
     // console.log("areeb")
 

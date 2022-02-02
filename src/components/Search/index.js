@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom";
 const Search = ( props ) => {
     const [text,setText] = useState('')
     const [dataexist,setdataexist] = useState(false)
+    const [emptysearch,setemptysearch] = useState(false);
     const [data,setdata] = useState([])
     let history = useHistory();
     
@@ -28,7 +29,9 @@ const Search = ( props ) => {
 
         })
         // console.log(te)
-        
+        if (result.length==0){
+            setemptysearch(true)
+        }
         setdata(result)
         setdataexist(true)
         
@@ -47,6 +50,7 @@ const Search = ( props ) => {
             // console.log(prevLocation);
             
             if ((prevLocation !== undefined) && ((prevLocation.pathname === '/singleproduct'))){
+                setemptysearch(false)
                 setdataexist(false)
             }
             // ...
@@ -62,7 +66,11 @@ const Search = ( props ) => {
     //   setdataexist(false)
       
       return(<Redirect to={{ pathname:'/singleproduct', state:data}}/>)
-  }else{
+  }
+  else if ((data.length == 0)&&(emptysearch)){
+      return(<Redirect to={{ pathname:'/singleproduct', state:data}}/>)
+  }
+  else{
       
   return (
       <CustomSearch>
