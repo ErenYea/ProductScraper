@@ -10,7 +10,8 @@ import Paper from '@mui/material/Paper';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import styled from 'styled-components'
-
+import Button from "@mui/material/Button";
+import Axios from "axios";
 
 import { tableCellClasses } from '@mui/material/TableCell';
 
@@ -21,8 +22,18 @@ import { tableCellClasses } from '@mui/material/TableCell';
 const Tables = (props) =>{
     // const {loading,products} = useFetch('http://localhost:3001/table');
     // console.log(products);
-   
-
+    const removeuser = async (item_number) => {
+        const respnce = await Axios.post("http://localhost:3001/remove", {
+        item_number: item_number
+        }).catch((error) => {
+        console.log(error);
+        });
+        console.log(respnce);
+    };
+    const remove = (item_number)=>{
+        console.log(item_number);
+        // removeuser(item_number);
+    }
     // if (loading){
     //     return (
     //         <div className="container ">
@@ -61,7 +72,14 @@ const Tables = (props) =>{
                             <TableCell align="right">{row.product_url}</TableCell>
                             <TableCell align="right">{row.image_url}</TableCell>
                             <TableCell align="right">{row.price}</TableCell>
-                            
+                            <TableCell align="right"><Button
+                            variant="contained"
+                            onClick={()=>remove(row.item_number)}
+                            size="medium"
+                            color="primary"
+                            >
+                            Remove
+                            </Button></TableCell>
                             </TableRow>
                         ))}
                         </TableBody>
