@@ -34,15 +34,15 @@ const LoginPage = ({ img }) => {
 
   //   console.log(password);
 
-  const getuser = async (username, password) => {
-    const respnce = await Axios.post("http://localhost:3001/user", {
-      username: username,
-      password: password,
-    }).catch((error) => {
-      console.log(error);
-    });
-    console.log(respnce);
-  };
+  // const getuser = async (username, password) => {
+  //   const respnce = await Axios.post("http://localhost:3001/user", {
+  //     username: username,
+  //     password: password,
+  //   }).catch((error) => {
+  //     console.log(error);
+  //   });
+  //   console.log(respnce);
+  // };
   const login = () => {
     console.log(username, password);
 
@@ -50,7 +50,7 @@ const LoginPage = ({ img }) => {
     cookies.set("password", password, { path: "/" });
     console.log(cookies.get("username"));
     console.log(cookies.get("password"));
-    getuser(username, password);
+    // getuser(username, password);
     if (username=='admin') {
       setredirectuser(false)
     }else{
