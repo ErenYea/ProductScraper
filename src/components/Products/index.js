@@ -26,7 +26,7 @@ const Index = ( props ) => {
       </div>
     )
   } else{
-    // console.log(products);
+    console.log(products);
     
     return (
       

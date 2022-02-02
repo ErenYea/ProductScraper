@@ -19,17 +19,17 @@ const SingleSLider = ()=>{
 
     return(
         <Carousel {...settings} className="review">
-            <Wraps img="image1.jpeg">
+            <Wraps img="https://i5.walmartimages.com/dfw/4ff9c6c9-38b1/k2-_9d3bd5b6-5114-49f5-bc74-8de1cf116333.v1.jpg">
                 
                 
             </Wraps>
-            <Wraps img="image2.jpeg">
+            <Wraps img="https://i5.walmartimages.com/dfw/4ff9c6c9-3dfa/k2-_fc0f8dd8-8596-441a-90c4-43b2d23a2f34.v1.jpg">
                 
             </Wraps>
-            <Wraps img="image3.jpeg">
+            <Wraps img="https://i5.walmartimages.com/dfw/4ff9c6c9-b616/k2-_bde06e1e-d176-4d81-a830-162846b8ac23.v1.jpg">
                 
             </Wraps>
-            <Wraps img="image4.jpeg">
+            <Wraps img="https://www.czone.com.pk/images/banners/236.jpg">
                 
             </Wraps>
 
@@ -59,7 +59,7 @@ const Wraps = styled.div`
     padding:20px;
     // border: 2px solid green;
     height:477px;
-    background-image:${(props)=>`url('/images/${props.img}')`};
+    background-image:${(props)=>`url('${props.img}')`};
     background-size: cover;
     // background-position: center;
     backgroung-repeat: no-repeat;
