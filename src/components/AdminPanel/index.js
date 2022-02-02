@@ -5,7 +5,7 @@ import ErrorPage from '../Error'
 import Tables from './table';
 
 
-const AdminPanel = ()=>{
+const AdminPanel = (props)=>{
     const [adminrights,setadminrights] = useState(false)
     const cookies = new Cookies();
 
@@ -27,7 +27,7 @@ const AdminPanel = ()=>{
                     <h2>Admin</h2>
                     <div className="underline"></div>
                     </div>
-                    <Tables />
+                    <Tables products={props.products} />
                 </section>
             </main>
         )

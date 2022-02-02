@@ -18,20 +18,20 @@ import { tableCellClasses } from '@mui/material/TableCell';
 
 
 
-const Tables = () =>{
-    const {loading,products} = useFetch('http://localhost:3001/table');
+const Tables = (props) =>{
+    // const {loading,products} = useFetch('http://localhost:3001/table');
     // console.log(products);
    
 
-    if (loading){
-        return (
-            <div className="container ">
-                <Box sx={{ display: 'flex' , justifyContent: 'center'}}>
-                    <CircularProgress />
-                </Box>
-            </div>
-        )
-    } else {
+    // if (loading){
+    //     return (
+    //         <div className="container ">
+    //             <Box sx={{ display: 'flex' , justifyContent: 'center'}}>
+    //                 <CircularProgress />
+    //             </Box>
+    //         </div>
+    //     )
+    // } else {
         // console.log(products[0].data[0]);
         return (
             <CustomDiv className="container review">
@@ -49,7 +49,7 @@ const Tables = () =>{
                         </TableRow>
                         </TableHead>
                         <TableBody>
-                        {products[0].data[0].map((row) => (
+                        {props.products[0].data[0].map((row) => (
                             <TableRow
                             key={row.item_number}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -73,7 +73,7 @@ const Tables = () =>{
 
 
 
-}
+// }
 
 
 const CustomDiv = styled.div`
