@@ -27,7 +27,7 @@ const Search = ( props ) => {
             }
 
         })
-        console.log(te)
+        // console.log(te)
         
         setdata(result)
         setdataexist(true)
@@ -44,7 +44,7 @@ const Search = ( props ) => {
         console.log(data);
         history.listen(nextLocation => {
             prevLocation = nextLocation;
-            console.log(prevLocation);
+            // console.log(prevLocation);
             
             if ((prevLocation !== undefined) && ((prevLocation.pathname === '/singleproduct'))){
                 setdataexist(false)

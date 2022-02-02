@@ -14,8 +14,8 @@ import Box from '@mui/material/Box';
 const Index = ( props ) => {
 
 
-    console.log(props.location.state)
-    console.log("areeb")
+    // console.log(props.location.state)
+    // console.log("areeb")
 
     return(<div className="container">
         <CustomDiv> 

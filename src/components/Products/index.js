@@ -15,8 +15,8 @@ import Box from '@mui/material/Box';
 
 
 const Index = ( props ) => {
-  console.log(props);
-  console.log("ham");
+  // console.log(props);
+  // console.log("ham");
   // const products = useContext(UserContext)
   // const {loading,products} = useFetch('http://localhost:3001/table')
   // if (loading) {
