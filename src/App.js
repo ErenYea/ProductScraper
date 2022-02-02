@@ -1,5 +1,5 @@
 import React from "react";
-
+import { createContext } from "react";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -15,20 +15,41 @@ import Landing from './components/Landing'
 import AdminPage from './components/AdminPanel'
 import LoginPage from './components/Login'
 import SingleProduct from './components/SingleProduct'
+import { useFetch } from './components/customhook/2-useFetch'
+import "slick-carousel/slick/slick-theme.css";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
 
 function App() {
-  return (
+  const {loading,products} = useFetch('http://localhost:3001/table')
+
+  if (loading){
+    return(
+      <div className="App">
+        <Router>
+          <Header></Header>
+          <div className="container">
+            <Box sx={{ display: 'flex' , justifyContent: 'center'}}>
+                        <CircularProgress />
+            </Box>
+          </div>
+        </Router>
+      </div>
+    )
+  }else{
+      return (
     <div className="App">
       <Router>
-        <Header></Header>
+        <Header products={products}></Header>
         <Switch>
-          <Route path="/product" render={(props)=> <Product {...props}/>}/>
+          <Route path="/product" render={(props)=> <Product products={products} {...props}/>}/>
             
           <Route path="/singleproduct" render={(props)=> <SingleProduct {...props}/>} /> 
 
 
           <Route exact path="/" >
-            <Landing />
+            <Landing products={products} />
           </Route>
       
           <Route path="/about">
@@ -40,7 +61,7 @@ function App() {
           </Route>
 
           <Route path="/admin-panel" >
-            <AdminPage/>
+            <AdminPage products={products}/>
           </Route>
 
           <Route path='/login' >
@@ -57,6 +78,8 @@ function App() {
       
     </div>
   );
+  }
+  
 }
 
 export default App;

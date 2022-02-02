@@ -21,7 +21,10 @@ const Index = ( props ) => {
         <CustomDiv> 
           <CustomHeading>Product</CustomHeading>
           <section className='products'>
-                <Product {...props.location.state}/>
+            {props.location.state.map((product)=>{
+              return <Product key={product.item_number} {...product} />
+            })}
+                
           </section>
           
           

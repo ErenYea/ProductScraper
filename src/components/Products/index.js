@@ -6,6 +6,7 @@ import Slider from '../SliderProduct'
 import "slick-carousel/slick/slick.css";
 // import products from './data'
 import { useFetch } from '../customhook/2-useFetch'
+import { useContext, useState, useEffect } from 'react';
 import "slick-carousel/slick/slick-theme.css";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
@@ -14,19 +15,20 @@ import Box from '@mui/material/Box';
 
 
 const Index = ( props ) => {
-  // console.log(props);
+  console.log(props);
   console.log("ham");
-  const {loading,products} = useFetch('http://localhost:3001/table')
-  if (loading) {
-    return(
-      <div className="container">
-        <Box sx={{ display: 'flex' , justifyContent: 'center'}}>
-                    <CircularProgress />
-        </Box>
-      </div>
-    )
-  } else{
-    console.log(products);
+  // const products = useContext(UserContext)
+  // const {loading,products} = useFetch('http://localhost:3001/table')
+  // if (loading) {
+  //   return(
+  //     <div className="container">
+  //       <Box sx={{ display: 'flex' , justifyContent: 'center'}}>
+  //                   <CircularProgress />
+  //       </Box>
+  //     </div>
+  //   )
+  // } else{
+    // console.log(products);
     
     return (
       
@@ -37,7 +39,7 @@ const Index = ( props ) => {
         <CustomDiv> 
           <CustomHeading>Products</CustomHeading>
           <section className='products'  style={{ gridTemplateColumns: `${props.property}`}}>
-            {products[0].data[0].map((product) => {
+            {props.products[0].data[0].map((product) => {
               return <Product key={product.item_number} {...product} />
             })}
           </section>
@@ -50,7 +52,7 @@ const Index = ( props ) => {
     
   )
 }
-  }
+  // }
   
 const CustomHeading = styled.h1`
 //   border:2px solid green;

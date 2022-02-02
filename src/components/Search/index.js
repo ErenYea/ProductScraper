@@ -7,47 +7,63 @@ import { Redirect } from "react-router-dom";
 
 
 
-const Search = () => {
+const Search = ( props ) => {
     const [text,setText] = useState('')
     const [dataexist,setdataexist] = useState(false)
-    const [data,setdata] = useState("")
-    var resp='';
-    const getdata = async (te) => {
-        Axios.post("http://localhost:3001/search", {
-            te:te
-        }).then((response) => {
-            console.log("hamza");
-            console.log(response.data.data);
-            setdata(response.data[0].data)
-            resp =  response
-        })
-        // console.log(respnce);
+    const [data,setdata] = useState([])
+    let resp='';
+    // const getdata = async (te) => {
+    //     Axios.post("http://localhost:3001/search", {
+    //         te:te
+    //     }).then((response) => {
+    //         console.log("hamza");
+    //         console.log(response.data.data);
+    //         setdata(response.data[0].data)
+    //         resp =  response
+    //     })
+    //     // console.log(respnce);
         
-        // return respnce;
-    };
+    //     // return respnce;
+    // };
     const Searchthis = (te) =>{
+        var result = []
+        // console.log(props.products[0].data[0]);
+        props.products[0].data[0].forEach((product,index)=>{
+            if (product.product_title.toLowerCase().match(te.toLowerCase())){
+                // console.log(product.product_title);
+                result = [...result, product]
+            }
+
+        })
         console.log(te)
-        getdata(te)
+        
+        setdata(result)
+        // getdata(te)
         // if (resp == undefined){
         //     Searchthis(te)
         // }
         // console.log(resp);
-        if (resp == undefined){
-            setTimeout(() =>{
-                // console.log(resp);
-                setdataexist(true)
-                // setdata(resp)
-            },2000)
-        }
+        // if (resp == undefined){
+        //     setTimeout(() =>{
+        //         // console.log(resp);
+        //         setdataexist(true)
+        //         // setdata(resp)
+        //     },2000)
+        // }
         
     }
     useEffect(() => {
-        if (resp==""){
-            setdata("")
-        }
+        console.log(data);
+        // setdataexist(true)
+        resp="areeb"
+        console.log(dataexist);
+        console.log(resp);
+        
 
-    },[resp,dataexist,data])
-  if (data != ""){
+    },[data])
+  if ((data.length != 0)&&resp != ""){
+    //   setdataexist(false)
+      resp=""
       return(<Redirect to={{ pathname:'/singleproduct', state:data}}/>)
   }else{
       

@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 
 import Search from "../Search";
 
-function Header() {
+function Header(props) {
   const [BurgerOpen, setBurgerOpen] = useState(false);
   const location = useLocation();
   const cookies = new Cookies();
@@ -47,7 +47,7 @@ function Header() {
           <img src="/images/logo.jpeg" alt="" width="100px" />
         </Link>
         <Menu>
-          {search?<Search/>:""}
+          {search?<Search products={props.products}/>:""}
         </Menu>
         <RightMenu>
           <Link to="/product">Product</Link>
