@@ -1,30 +1,22 @@
-import TextField from "@mui/material/TextField";
+
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components'
 import SearchIcon from '@mui/icons-material/Search';
-import Axios from "axios";
-import { Redirect } from "react-router-dom";
 
+import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 const Search = ( props ) => {
     const [text,setText] = useState('')
     const [dataexist,setdataexist] = useState(false)
     const [data,setdata] = useState([])
-    let resp='';
-    // const getdata = async (te) => {
-    //     Axios.post("http://localhost:3001/search", {
-    //         te:te
-    //     }).then((response) => {
-    //         console.log("hamza");
-    //         console.log(response.data.data);
-    //         setdata(response.data[0].data)
-    //         resp =  response
-    //     })
-    //     // console.log(respnce);
-        
-    //     // return respnce;
-    // };
+    let history = useHistory();
+    
+    
+    
+    
+   
     const Searchthis = (te) =>{
         var result = []
         // console.log(props.products[0].data[0]);
@@ -38,32 +30,37 @@ const Search = ( props ) => {
         console.log(te)
         
         setdata(result)
-        // getdata(te)
-        // if (resp == undefined){
-        //     Searchthis(te)
-        // }
-        // console.log(resp);
-        // if (resp == undefined){
-        //     setTimeout(() =>{
-        //         // console.log(resp);
-        //         setdataexist(true)
-        //         // setdata(resp)
-        //     },2000)
-        // }
+        setdataexist(true)
+        
+        
+       
         
     }
+    let prevLocation;
     useEffect(() => {
+        // if (resp==""){
+        //     setdata([])
+        // }
         console.log(data);
-        // setdataexist(true)
-        resp="areeb"
-        console.log(dataexist);
-        console.log(resp);
+        history.listen(nextLocation => {
+            prevLocation = nextLocation;
+            console.log(prevLocation);
+            
+            if ((prevLocation !== undefined) && ((prevLocation.pathname === '/singleproduct'))){
+                setdataexist(false)
+            }
+            // ...
+            prevLocation = nextLocation;
+    });
+
+    },[data,dataexist])
+   
         
 
-    },[data])
-  if ((data.length != 0)&&resp != ""){
+
+  if ((data.length != 0)&&(dataexist)){
     //   setdataexist(false)
-      resp=""
+      
       return(<Redirect to={{ pathname:'/singleproduct', state:data}}/>)
   }else{
       
