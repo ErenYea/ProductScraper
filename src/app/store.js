@@ -6,3 +6,5 @@ export const store = configureStore({
     products: productReducer,
   },
 });
+
+store.subscribe(()=>console.log(store.getState()))

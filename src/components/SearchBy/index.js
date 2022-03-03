@@ -3,17 +3,24 @@ import styled from 'styled-components'
 import Product from './Product'
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  additems,
+  getAsync,
+  selectProducts,
+} from '../../features/Products/productslice';
 const Index = ( props ) =>{
     const [dataexist,setdataexist] = useState(false)
     const [data,setdata] = useState([])
     let history = useHistory();
     const [emptysearch, setemptysearch] = useState(false)
+    const products = useSelector(selectProducts);
     // console.log(props.products[0].data[0]);
 
     const searchby = (product_title)=>{
         // console.log(product_title);
         var result = []
-        props.products[0].data[0].forEach((product,index)=>{
+        products.forEach((product,index)=>{
             if (product.product_title.match(product_title)){
                 // console.log(product.product_title);
                 result = [...result, product]

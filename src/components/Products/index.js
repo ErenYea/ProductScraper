@@ -10,11 +10,19 @@ import { useContext, useState, useEffect } from 'react';
 import "slick-carousel/slick/slick-theme.css";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  additems,
+  getAsync,
+  selectProducts,
+} from '../../features/Products/productslice';
 
 
 
 
 const Index = ( props ) => {
+  const products = useSelector(selectProducts);
+  // console.log(products);
   if (props.location.state!=undefined) {
     if (props.location.state.length ==0 ){
       return (
@@ -69,7 +77,7 @@ const Index = ( props ) => {
         <CustomDiv> 
           <CustomHeading>Products</CustomHeading>
           <section className='products'  style={{ gridTemplateColumns: `${props.property}`}}>
-            {props.products[0].data[0].map((product) => {
+            {products[0].map((product) => {
               return <Product key={product.item_number} {...product} />
             })}
           </section>

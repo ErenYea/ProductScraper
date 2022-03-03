@@ -1,6 +1,7 @@
-import React from "react";
+import React , {useEffect,useState} from "react";
 import { createContext } from "react";
 import "./App.css";
+import axios from 'axios';
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,37 +20,58 @@ import { useFetch } from './components/customhook/2-useFetch'
 import "slick-carousel/slick/slick-theme.css";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  additems,
+  getAsync,
+  selectProducts,
+} from './features/Products/productslice';
 
 
 function App() {
-  const {loading,products} = useFetch('http://localhost:3001/table')
+  const [data,setData] = useState(null);
+  const products = useSelector(selectProducts);
+  const dispatch = useDispatch();
+  // const {loading,products} = useFetch('http://localhost:3001/table')
+  const funct = async () => {
+        const response = await axios.get('http://localhost:3001/table');
+        // The value we return becomes the `fulfilled` action payload
+        setData(response.data[0].data[0]);
+      }
+  useEffect(() => {
+      dispatch(getAsync('http://localhost:3001/table'))
+      console.log(products);
+    // console.log(products[0].data);
+  },[])
 
-  if (loading){
-    return(
-      <div className="App">
-        <Router>
-          <Header></Header>
-          <div className="container">
-            <Box sx={{ display: 'flex' , justifyContent: 'center'}}>
-                        <CircularProgress />
-            </Box>
-          </div>
-        </Router>
-      </div>
-    )
-  }else{
+ 
+
+  // if (loading){
+  //   return(
+  //     <div className="App">
+  //       <Router>
+  //         <Header></Header>
+  //         <div className="container">
+  //           <Box sx={{ display: 'flex' , justifyContent: 'center'}}>
+  //                       <CircularProgress />
+  //           </Box>
+  //         </div>
+  //       </Router>
+  //     </div>
+  //   )
+  // }else{
       return (
     <div className="App">
       <Router>
         <Header products={products}></Header>
         <Switch>
-          <Route path="/product" render={(props)=> <Product products={products} {...props}/>}/>
+          <Route path="/product" render={(props)=> <Product {...props}/>}/>
             
           <Route path="/singleproduct" render={(props)=> <SingleProduct {...props}/>} /> 
 
 
           <Route exact path="/" >
-            <Landing products={products} />
+            <Landing  />
           </Route>
       
           <Route path="/about">
@@ -80,6 +102,6 @@ function App() {
   );
   }
   
-}
+
 
 export default App;

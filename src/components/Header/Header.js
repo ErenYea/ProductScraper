@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Cookies from 'universal-cookie';
 import { useHistory } from "react-router-dom";
 
+
 import Search from "../Search";
 
 function Header(props) {
@@ -47,7 +48,7 @@ function Header(props) {
           <img src="/images/logo.jpeg" alt="" width="100px" />
         </Link>
         <Menu>
-          {search?<Search products={props.products}/>:""}
+          {search?<Search />:""}
         </Menu>
         <RightMenu>
           <Link to="/product">Product</Link>

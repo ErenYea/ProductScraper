@@ -5,7 +5,12 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  additems,
+  getAsync,
+  selectProducts,
+} from '../../features/Products/productslice';
 
 const Search = ( props ) => {
     const [text,setText] = useState('')
@@ -14,14 +19,14 @@ const Search = ( props ) => {
     const [data,setdata] = useState([])
     let history = useHistory();
     
-    
+    const products = useSelector(selectProducts);
     
     
    
     const Searchthis = (te) =>{
         var result = []
         // console.log(props.products[0].data[0]);
-        props.products[0].data[0].forEach((product,index)=>{
+        products[0].forEach((product,index)=>{
             if (product.product_title.toLowerCase().match(te.toLowerCase())){
                 // console.log(product.product_title);
                 result = [...result, product]
